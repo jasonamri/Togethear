@@ -1,0 +1,20 @@
+<mat-grid-list cols="2">
+    <mat-grid-tile *ngFor="let u of users;">
+        <div class="header">
+            <img src={{u.profileUrl}}/>
+            <div class="textbox">
+                <h3>{{u.title}}</h3>
+                <h4>{{u.name}} - <a href={{u.url}}>View Profile</a></h4>
+                <h5>{{u.playlistCount}} playlists - {{u.followerCount}} followers</h5>
+            </div>
+        </div>
+        <table mat-table [dataSource]="playlists">
+                <ng-container *ngFor="let col of displayColumns;" matColumnDef="{{col}}">
+                    <th mat-header-cell *matHeaderCellDef> {{col}} </th>
+                    <td mat-cell *matCellDef="let element">{{element[col]}}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+            </table>
+    </mat-grid-tile>
+</mat-grid-list>

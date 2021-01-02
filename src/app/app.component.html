@@ -1,0 +1,9 @@
+<mat-toolbar>
+    <h1 fxLayout="row" fxLayoutAlign="start">
+        Toget<b>hear</b>
+    </h1>
+    <h2 fxLayout="row" fxLayoutAlign="end">
+        Logged in as <b>{{client.username}}</b>. <u (click)="logout()">Logout</u>?
+    </h2>
+</mat-toolbar>
+<router-outlet></router-outlet>
