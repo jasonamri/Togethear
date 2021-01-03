@@ -15,7 +15,7 @@
 .mat-h1,
 .mat-headline,
 .mat-typography h1 {
-    font: 400 64pt/32px Roboto, "Helvetica Neue", sans-serif;
+    font: 400 24pt/32px Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px
 }
@@ -1322,7 +1322,7 @@ textarea.cdk-textarea-autosize-measuring-firefox {
 .mat-raised-button.mat-accent,
 .mat-fab.mat-accent,
 .mat-mini-fab.mat-accent {
-    background-color: #ff4081
+    background-color: #a5ffef
 }
 
 .mat-flat-button.mat-warn,
@@ -1868,7 +1868,7 @@ td.mat-footer-cell {
 
 .mat-dialog-container {
     box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
-    background: #a5ffef;
+    background: #fff;
     color: rgba(0, 0, 0, .87)
 }
 

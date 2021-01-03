@@ -33,28 +33,27 @@
                 <td mat-cell *matCellDef="let element"> {{element.songs}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="runtime">
-                <th mat-header-cell *matHeaderCellDef> Runtime </th>
-                <td mat-cell *matCellDef="let element"> {{element.runtime}} </td>
-            </ng-container>
-
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
-    <div *ngIf="users.length != 2" class="col" fxLayout="column" fxLayoutGap="12px">
+    <div *ngIf="users.length == 1" class="col" fxLayout="column" fxLayoutGap="12px">
         <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="24px">
             <img src={{emptyUser.profileUrl}} />
             <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="24px">
                 <h3>{{emptyUser.title}}</h3>
                 <mat-form-field class="example-form-field">
                     <mat-label>Search for Spotify User</mat-label>
-                    <input matInput type="text">
+                    <input matInput [formControl]="searchControl" type="text" (keyup.enter)="search()">
+                    <mat-icon matSuffix (click)="search()">search</mat-icon>
                 </mat-form-field>
             </div>
         </div>
     </div>
 </div>
-<div fxLayout="row" fxLayoutAlign="center">
-    <button mat-flat-button color="primary">Unify</button>
+
+<div fxLayout="row" fxLayoutAlign="center end" *ngIf="users.length == 1">
+    <button mat-fab style="position:absolute;bottom:24px;" color="accent" (click)="unify()">
+        <mat-icon color="primary">merge_type</mat-icon>
+    </button>
 </div>

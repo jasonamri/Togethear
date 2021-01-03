@@ -54,8 +54,7 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.css",
-                            "src/theme.scss"
+                            "src/styles.css"
                         ],
                         "scripts": []
                     },
