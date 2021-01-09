@@ -25,6 +25,11 @@ export class SpotifyService {
     return this.refresh_token;
   }
 
+  clearTokens() {
+    this.access_token = "";
+    this.refresh_token = "";
+  }
+
 
 
   private getRequest(url: string) {

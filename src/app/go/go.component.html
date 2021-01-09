@@ -1,3 +1,11 @@
+<mat-toolbar *ngIf="client.ready" fxLayout="row" fxLayoutAlign="space-between center" color="primary">
+    <h1>
+        Toget<b>hear</b>
+    </h1>
+    <h2>
+        Logged in as <b>{{client.username}}</b>. <u (click)="logout()">Logout</u>?
+    </h2>
+</mat-toolbar>
 <div fxLayout="row" fxLayoutAlign="space-evenly" fxLayoutGap="24px" class="wrapper">
     <div *ngFor="let u of users;" class="col" fxLayout="column" fxLayoutGap="12px">
         <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="24px">

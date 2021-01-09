@@ -2,7 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { SpotifyService } from '.././spotify.service';
 import { FormControl } from '@angular/forms'
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router';
+import { skip } from 'rxjs/operators';
+import {Location} from '@angular/common';
 
 interface Playlist {
   check: boolean,
@@ -35,7 +37,9 @@ export class GoComponent implements OnInit {
   constructor(
     private spotify: SpotifyService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public location: Location
   ) { }
 
   users: User[] = []
@@ -47,15 +51,37 @@ export class GoComponent implements OnInit {
     profileUrl: "assets/defaultprofile.png",
   }
 
+  client = {
+    ready: false,
+    username: ""
+  }
+
   searchControl = new FormControl('');
 
   searchVal: string = "";
 
   ngOnInit(): void {
-    this.getUser()
-    //this.getUser("taylodday01")
+    
 
-    this.router.navigate(['done', {'playlist_id': "test123456"} ]);
+    let currentUrl = this.location.path();
+    console.log(currentUrl);
+    this.activatedRoute.queryParams.pipe(skip(1)).subscribe(params => {
+      let access_token = params['access_token'];
+      let refresh_token = params['refresh_token'];
+      let error = params['error'];
+
+      if (error) { //TODO better error handling
+        console.log('There was an error during the authentication');
+        console.log(error);
+      }
+
+      this.spotify.setTokens(access_token, refresh_token);
+      this.spotify.getUser().subscribe(data => {
+        this.client.ready = true;
+        this.client.username = data["display_name"];
+      })
+      this.getUser();
+    });
   }
 
 
@@ -89,6 +115,11 @@ export class GoComponent implements OnInit {
         })
       })
     })
+  }
+
+  logout() {
+    this.spotify.clearTokens();
+    this.router.navigate(['landing']);
   }
 
 
