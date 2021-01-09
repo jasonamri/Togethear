@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from './spotify.service';
 import { skip } from 'rxjs/operators';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,17 @@ import { skip } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
 
+  private nonAuthPages = ["done", "landing"];
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private spotify: SpotifyService
+    private spotify: SpotifyService,
+    public location: Location
   ) { }
 
   ngOnInit() {
+    let currentUrl = this.location.path();
+    console.log(currentUrl);
     this.activatedRoute.queryParams.pipe(skip(1)).subscribe(params => {
       let access_token = params['access_token'];
       let refresh_token = params['refresh_token'];

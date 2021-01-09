@@ -31,7 +31,6 @@ export class AuthInterceptor implements HttpInterceptor {
         return this.http.get<any>("https://togethear.jasonamri.com/refresh_token?refresh_token="+refresh_token).pipe(switchMap(data => {
           //set new access token for future requests  
           this.spotify.setTokens(data.access_token, refresh_token); 
-          console.log(data.access_token)
           // resend the request with new access_token
           const authReqRepeat = request.clone({
             headers: new HttpHeaders({

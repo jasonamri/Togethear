@@ -13,7 +13,7 @@
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element">
                     <div class="sel">
-                        <mat-checkbox [checked]="element.check"></mat-checkbox>
+                        <mat-checkbox [(ngModel)]="element.check"></mat-checkbox>
                     </div>
                 </td>
             </ng-container>
@@ -52,7 +52,7 @@
     </div>
 </div>
 
-<div fxLayout="row" fxLayoutAlign="center end" *ngIf="users.length == 1">
+<div fxLayout="row" fxLayoutAlign="center end" *ngIf="users.length == 2">
     <button mat-fab style="position:absolute;bottom:24px;" color="accent" (click)="unify()">
         <mat-icon color="primary">merge_type</mat-icon>
     </button>
