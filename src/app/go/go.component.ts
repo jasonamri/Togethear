@@ -61,14 +61,16 @@ export class GoComponent implements OnInit {
   searchVal: string = "";
 
   ngOnInit(): void {
-    
+    //this.router.navigate(['done'], { queryParams: {'playlist_id': "6eIxPd89a8Jq70vPsT4yhT"} });
 
-    let currentUrl = this.location.path();
-    console.log(currentUrl);
-    this.activatedRoute.queryParams.pipe(skip(1)).subscribe(params => {
+    //let currentUrl = this.location.path();
+    //console.log(currentUrl);
+    this.activatedRoute.queryParams.subscribe(params => {
       let access_token = params['access_token'];
       let refresh_token = params['refresh_token'];
       let error = params['error'];
+
+      //console.log(access_token);
 
       if (error) { //TODO better error handling
         console.log('There was an error during the authentication');
@@ -189,7 +191,7 @@ export class GoComponent implements OnInit {
     dialogRef.componentInstance.data = { status: "Done!" };
     dialogRef.close();
 
-    this.router.navigate(['done', {'playlist_id': playlist_id} ]);
+    this.router.navigate(['done', { queryParams: {'playlist_id': playlist_id} }]);
   }
 
   private async getPlaylistTracks(playlist_id: string) {
