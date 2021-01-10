@@ -44,8 +44,6 @@ export class CallbackComponent implements OnInit {
       let code = params.code || null;
       let state = params.state || null;
       let storedState = this.getCookie(environment.stateKey);
-      console.log(storedState);
-
 
       if (state === null || state !== storedState) {
         this.status = "Error: " + "state_mismatch";

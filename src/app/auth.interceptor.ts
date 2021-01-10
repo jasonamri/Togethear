@@ -11,6 +11,8 @@ import { Observable } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 
 import { SpotifyService } from './spotify.service';
+import { environment } from 'src/environments/environment';
+import { stringify } from 'querystring';
 
 
 
@@ -28,17 +30,31 @@ export class AuthInterceptor implements HttpInterceptor {
       if (err.status === 401 && err.error.error.message == "The access token expired") {
         console.log("Refreshing Token");
         const refresh_token = this.spotify.getRefreshToken()
-        return this.http.get<any>("https://togethear.jasonamri.com/refresh_token?refresh_token="+refresh_token).pipe(switchMap(data => {
-          //set new access token for future requests  
-          this.spotify.setTokens(data.access_token, refresh_token); 
-          // resend the request with new access_token
-          const authReqRepeat = request.clone({
-            headers: new HttpHeaders({
-              'Authorization': 'Bearer ' + data.access_token
-            })
-          });
-          return next.handle(authReqRepeat);
-        }));        
+
+        const headers = {
+          'Authorization': 'Basic ' + btoa(environment.client_id + ':' + environment.client_secret),
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+
+        const body = {
+          refresh_token: refresh_token,
+          grant_type: 'refresh_token'
+        }
+
+        return this.http.post<any>('https://accounts.spotify.com/api/token', stringify(body), { headers, observe: 'response' }).pipe(switchMap(response => {
+          if (response.status === 200) {
+            //set new access token for future requests  
+            this.spotify.setTokens(response.body.access_token, refresh_token);
+            // resend the request with new access_token
+            const authReqRepeat = request.clone({
+              headers: new HttpHeaders({
+                'Authorization': 'Bearer ' + response.body.access_token
+              })
+            });
+            return next.handle(authReqRepeat);
+          }
+          return next.handle(request);
+        }));
       } else {
         //not a refresh token error, fall through
         return next.handle(request);
