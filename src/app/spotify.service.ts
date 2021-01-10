@@ -101,4 +101,8 @@ export class SpotifyService {
     })
   }
 
+  getPlaylist(playlist_id: string) {
+    return this.getRequest("https://api.spotify.com/v1/playlists/" + playlist_id);
+  }
+
 }
