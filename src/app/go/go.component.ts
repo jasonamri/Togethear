@@ -77,7 +77,7 @@ export class GoComponent implements OnInit {
 
       this.spotify.setTokens(access_token, refresh_token);
 
-      //this.router.navigate(['done'], { queryParams: {'playlist_id': "6eIxPd89a8Jq70vPsT4yhT"} });
+      //this.router.navigate(['done'], { queryParams: {playlist_id: "6eIxPd89a8Jq70vPsT4yhT"} });
 
       this.spotify.getUser().subscribe(data => {
         this.client.ready = true;
@@ -192,7 +192,7 @@ export class GoComponent implements OnInit {
     dialogRef.componentInstance.data = { status: "Done!" };
     dialogRef.close();
 
-    this.router.navigate(['done', { queryParams: {'playlist_id': playlist_id} }]);
+    this.router.navigate(['done', { queryParams: {playlist_id: playlist_id} }]);
   }
 
   private async getPlaylistTracks(playlist_id: string) {
