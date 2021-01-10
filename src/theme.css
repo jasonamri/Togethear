@@ -15,7 +15,7 @@
 .mat-h1,
 .mat-headline,
 .mat-typography h1 {
-    font: 400 12vw/32px Roboto, "Helvetica Neue", sans-serif;
+    font: 400 8vw/32px Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
     font-weight: lighter;
@@ -24,7 +24,7 @@
 .mat-h2,
 .mat-title,
 .mat-typography h2 {
-    font: 500 8vw/32px Roboto, "Helvetica Neue", sans-serif;
+    font: 500 4vw/32px Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
     font-weight: lighter;
