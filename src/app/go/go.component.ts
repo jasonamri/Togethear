@@ -133,6 +133,8 @@ export class GoComponent implements OnInit {
         u1tracks = u1tracks.concat(buffer)
       }
     }
+    u1tracks = u1tracks.filter((item, pos) => { return u1tracks.indexOf(item)== pos; }); //remove duplicates
+
 
     dialogRef.componentInstance.data = { status: "Done getting " + this.users[0].name + "'s playlists!" };
 
@@ -144,12 +146,14 @@ export class GoComponent implements OnInit {
         u2tracks = u2tracks.concat(buffer)
       }
     }
+    u2tracks = u2tracks.filter((item, pos) => { return u2tracks.indexOf(item)== pos; }); //remove duplicates
+
 
     dialogRef.componentInstance.data = { status: "Done getting " + this.users[1].name + "'s playlists!" };
 
     dialogRef.componentInstance.data = { status: "Finding shared songs..." };
 
-    let intersect = u1tracks.filter(value => u2tracks.includes(value));
+    let intersect = u1tracks.filter(value => u2tracks.includes(value)); //find intersect
 
     dialogRef.componentInstance.data = { status: "Sorting tracks..." };
 
@@ -165,7 +169,6 @@ export class GoComponent implements OnInit {
       let start = 0 + (i * 100);
       let end = 100 + (i * 100);
       await this.spotify.addToPlaylist(playlist_id, intersect.slice(start, end)).toPromise();
-      console.log(intersect.slice(start, end));
     }
 
     dialogRef.componentInstance.data = { status: "Putting a bow on it..." };
@@ -175,7 +178,7 @@ export class GoComponent implements OnInit {
     dialogRef.componentInstance.data = { status: "Done!" };
     dialogRef.close();
 
-    this.router.navigate(['done', { queryParams: { playlist_id: playlist_id } }]);
+    this.router.navigate(['done'], { queryParams: { playlist_id: playlist_id } });
   }
 
   private async getPlaylistTracks(playlist_id: string) {
@@ -199,13 +202,13 @@ export class GoComponent implements OnInit {
 
 @Component({
   selector: 'dialog-notfound',
-  template: `<h1 mat-dialog-title>Error</h1><div mat-dialog-content>User not found!</div>`
+  template: `<h3 mat-dialog-title>Error</h3><div mat-dialog-content>User not found!</div>`
 })
 class DialogNotFound { }
 
 @Component({
   selector: 'dialog-loading',
-  template: `<h1 mat-dialog-title>Unifying</h1><div mat-dialog-content>{{data.status}}</div>`
+  template: `<h3 mat-dialog-title>Unifying</h3><div mat-dialog-content>{{data.status}}</div>`
 })
 class DialogLoading {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
