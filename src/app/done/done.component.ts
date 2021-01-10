@@ -32,9 +32,10 @@ export class DoneComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       let playlist_id = params.playlist_id;
       this.spotify.getPlaylist(playlist_id).subscribe(result => {
+        console.log(result);
         this.pl.imgUrl = result.images[0].url;
         this.pl.description = result.description;
-        this.pl.shareUrl = result.external_urls[0].spotify;
+        this.pl.shareUrl = result.external_urls.spotify;
         this.pl.name = result.name;
       })
     });
