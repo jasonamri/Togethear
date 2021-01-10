@@ -12,7 +12,6 @@ import { catchError, switchMap } from 'rxjs/operators';
 
 import { SpotifyService } from './spotify.service';
 import { environment } from 'src/environments/environment';
-import { stringify } from 'querystring';
 
 
 
@@ -23,6 +22,10 @@ export class AuthInterceptor implements HttpInterceptor {
     private http: HttpClient,
     private spotify: SpotifyService
   ) { }
+
+  private stringify(params: any) {
+    return Object.keys(params).map(key => key + '=' + params[key]).join('&');
+  }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(catchError((err, caught) => {
@@ -41,7 +44,7 @@ export class AuthInterceptor implements HttpInterceptor {
           grant_type: 'refresh_token'
         }
 
-        return this.http.post<any>('https://accounts.spotify.com/api/token', stringify(body), { headers, observe: 'response' }).pipe(switchMap(response => {
+        return this.http.post<any>('https://accounts.spotify.com/api/token', this.stringify(body), { headers, observe: 'response' }).pipe(switchMap(response => {
           if (response.status === 200) {
             //set new access token for future requests  
             this.spotify.setTokens(response.body.access_token, refresh_token);

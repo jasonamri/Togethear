@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { stringify } from 'querystring';
 import { SpotifyService } from '../spotify.service';
 import { environment } from './../../environments/environment';
 
@@ -26,6 +25,10 @@ export class CallbackComponent implements OnInit {
   ) { }
 
   status = "Logging in...";
+
+  private stringify(params: any) {
+    return Object.keys(params).map(key => key + '=' + params[key]).join('&');
+  }
 
   private getCookie(name: string) {
     if (document.cookie) {
@@ -62,7 +65,7 @@ export class CallbackComponent implements OnInit {
           grant_type: 'authorization_code'
         }
 
-        this.http.post<any>('https://accounts.spotify.com/api/token', stringify(body), { headers, observe: 'response' }).subscribe(response => {
+        this.http.post<any>('https://accounts.spotify.com/api/token', this.stringify(body), { headers, observe: 'response' }).subscribe(response => {
           if (response.status === 200) {
             this.spotify.setTokens(response.body.access_token, response.body.refresh_token);
             this.router.navigate(['go']);

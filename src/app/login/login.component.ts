@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { stringify } from 'querystring';
 import { environment } from './../../environments/environment';
 
 @Component({
@@ -15,6 +14,10 @@ import { environment } from './../../environments/environment';
 export class LoginComponent implements OnInit {
 
   constructor() { }
+
+  private stringify(params: any) {
+    return Object.keys(params).map(key => key + '=' + params[key]).join('&');
+  }
 
   //Generates a random string containing numbers and letters
   private generateRandomString(length: number) {
@@ -41,7 +44,7 @@ export class LoginComponent implements OnInit {
       state: state
     }
 
-    window.location.href = 'https://accounts.spotify.com/authorize?' + stringify(params);
+    window.location.href = 'https://accounts.spotify.com/authorize?' + this.stringify(params);
   }
 
 }

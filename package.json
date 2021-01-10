@@ -1,43 +1,38 @@
 {
-  "name": "togethear",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "nodemon server.js",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "postinstall": "ngcc"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "~11.0.5",
-    "@angular/cdk": "^11.0.3",
-    "@angular/common": "~11.0.5",
-    "@angular/compiler": "~11.0.5",
-    "@angular/core": "~11.0.5",
-    "@angular/flex-layout": "^11.0.0-beta.33",
-    "@angular/forms": "~11.0.5",
-    "@angular/material": "^11.0.3",
-    "@angular/platform-browser": "~11.0.5",
-    "@angular/platform-browser-dynamic": "~11.0.5",
-    "@angular/router": "~11.0.5",
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "querystring": "^0.2.0",
-    "rxjs": "~6.6.0",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1100.5",
-    "@angular/cli": "~11.0.5",
-    "@angular/compiler-cli": "~11.0.5",
-    "@types/node": "^12.11.1",
-    "ts-node": "~8.3.0",
-    "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
-  }
+    "name": "togethear",
+    "version": "0.0.0",
+    "scripts": {
+        "ng": "ng",
+        "start": "nodemon server.js",
+        "build": "ng build",
+        "test": "ng test",
+        "lint": "ng lint",
+        "postinstall": "ngcc"
+    },
+    "private": true,
+    "dependencies": {
+        "@angular/animations": "~11.0.5",
+        "@angular/cdk": "^11.0.3",
+        "@angular/common": "~11.0.5",
+        "@angular/compiler": "~11.0.5",
+        "@angular/core": "~11.0.5",
+        "@angular/flex-layout": "^11.0.0-beta.33",
+        "@angular/forms": "~11.0.5",
+        "@angular/material": "^11.0.3",
+        "@angular/platform-browser": "~11.0.5",
+        "@angular/platform-browser-dynamic": "~11.0.5",
+        "@angular/router": "~11.0.5",
+        "rxjs": "~6.6.0",
+        "tslib": "^2.0.0",
+        "zone.js": "~0.10.2"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "~0.1100.5",
+        "@angular/cli": "~11.0.5",
+        "@angular/compiler-cli": "~11.0.5",
+        "@types/node": "^12.11.1",
+        "ts-node": "~8.3.0",
+        "tslint": "~6.1.0",
+        "typescript": "~4.0.2"
+    }
 }
