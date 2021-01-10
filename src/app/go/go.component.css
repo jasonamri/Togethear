@@ -18,3 +18,8 @@ table {
 a {
     color: black;
 }
+
+.fab {
+    position: fixed;
+    bottom: 24px;
+}
