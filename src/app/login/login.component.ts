@@ -26,20 +26,25 @@ export class LoginComponent implements OnInit {
     return text;
   }
 
+  private stringify(params: any) {
+    return Object.keys(params).map(key => key + '=' + params[key]).join('&');
+  }
+
   ngOnInit(): void {
-    var state = this.generateRandomString(16);
+    const state = this.generateRandomString(16);
     document.cookie = environment.stateKey + "=" + state;
 
-    // your application requests authorization
-    var scope = 'user-read-private ugc-image-upload playlist-modify-public playlist-read-private';
-    window.location.href = 'https://accounts.spotify.com/authorize?' +
-      JSON.stringify({
-        response_type: 'code',
-        client_id: environment.client_id,
-        scope: scope,
-        redirect_uri: environment.redirect_uri,
-        state: state
-      });
+    const scope = 'user-read-private ugc-image-upload playlist-modify-public playlist-read-private';
+
+    const params = {
+      response_type: 'code',
+      client_id: environment.client_id,
+      scope: scope,
+      redirect_uri: environment.redirect_uri,
+      state: state
+    }
+
+    window.location.href = 'https://accounts.spotify.com/authorize?' + this.stringify(params);
   }
 
 }

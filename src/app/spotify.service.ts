@@ -18,9 +18,17 @@ export class SpotifyService {
   private access_token = "";
   private refresh_token = "";
 
+  private checkTokens() {
+    //redirect if no access token is available
+    if (this.access_token == "" || this.access_token == undefined) {
+      this.router.navigate(['login']);
+    }
+  }
+
   setTokens(aT: string, rT: string) {
     this.access_token = aT;
     this.refresh_token = rT;
+    this.checkTokens();
   }
 
   getRefreshToken(): string {
@@ -30,13 +38,6 @@ export class SpotifyService {
   clearTokens() {
     this.access_token = "";
     this.refresh_token = "";
-  }
-
-  private checkTokens() {
-    //redirect if no access token is available
-    if (this.access_token == "" || this.access_token == undefined) {
-      this.router.navigate(['landing']);
-    }
   }
 
 
