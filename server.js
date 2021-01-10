@@ -12,16 +12,7 @@ var client_secret = process.env.CLIENT_SECRET; // Your secret
 var redirect_uri = 'https://togethear.jasonamri.com/callback'; // Your redirect uri
 var stateKey = 'spotify_auth_state';
 
-//Generates a random string containing numbers and letters
-var generateRandomString = function(length) {
-    var text = '';
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    for (var i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
-};
 
 
 var app = express();
@@ -37,23 +28,6 @@ app.use(bodyParser.urlencoded({ 'extended': 'false' }));
 app.use(express.static('./dist/togethear'));
 
 //backend
-app.get('/login', function(req, res) {
-
-    var state = generateRandomString(16);
-    res.cookie(stateKey, state);
-
-    // your application requests authorization
-    var scope = 'user-read-private ugc-image-upload playlist-modify-public playlist-read-private';
-    res.redirect('https://accounts.spotify.com/authorize?' +
-        querystring.stringify({
-            response_type: 'code',
-            client_id: client_id,
-            scope: scope,
-            redirect_uri: redirect_uri,
-            state: state
-        }));
-});
-
 app.get('/callback', function(req, res) {
 
     // your application requests refresh and access tokens

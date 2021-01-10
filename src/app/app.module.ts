@@ -15,6 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AuthInterceptor } from './auth.interceptor';
     AppComponent,
     LandingComponent,
     GoComponent,
-    DoneComponent
+    DoneComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
