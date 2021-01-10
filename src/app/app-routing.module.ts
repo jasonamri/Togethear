@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CallbackComponent } from './callback/callback.component';
 import { DoneComponent } from './done/done.component';
 import { GoComponent } from './go/go.component';
 import { LandingComponent } from './landing/landing.component';
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'go', component: GoComponent },
   { path: 'done', component: DoneComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'callback', component: CallbackComponent }
 ];
 
 @NgModule({

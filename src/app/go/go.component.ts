@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms'
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { skip } from 'rxjs/operators';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 interface Playlist {
   check: boolean,
@@ -61,30 +61,13 @@ export class GoComponent implements OnInit {
   searchVal: string = "";
 
   ngOnInit(): void {
-    //let currentUrl = this.location.path();
-    //console.log(currentUrl);
-    this.activatedRoute.queryParams.subscribe(params => {
-      let access_token = params.access_token;
-      let refresh_token = params.refresh_token;
-      let error = params.error;
+    //this.router.navigate(['done'], { queryParams: {playlist_id: "6eIxPd89a8Jq70vPsT4yhT"} });
 
-      //console.log(access_token);
-
-      if (error) { //TODO better error handling
-        console.log('There was an error during the authentication');
-        console.log(error);
-      }
-
-      this.spotify.setTokens(access_token, refresh_token);
-
-      //this.router.navigate(['done'], { queryParams: {playlist_id: "6eIxPd89a8Jq70vPsT4yhT"} });
-
-      this.spotify.getUser().subscribe(data => {
-        this.client.ready = true;
-        this.client.username = data["display_name"];
-      })
-      this.getUser();
-    });
+    this.spotify.getUser().subscribe(data => {
+      this.client.ready = true;
+      this.client.username = data["display_name"];
+    })
+    this.getUser();
   }
 
 
@@ -192,7 +175,7 @@ export class GoComponent implements OnInit {
     dialogRef.componentInstance.data = { status: "Done!" };
     dialogRef.close();
 
-    this.router.navigate(['done', { queryParams: {playlist_id: playlist_id} }]);
+    this.router.navigate(['done', { queryParams: { playlist_id: playlist_id } }]);
   }
 
   private async getPlaylistTracks(playlist_id: string) {
