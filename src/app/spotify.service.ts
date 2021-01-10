@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ImagesService } from './images.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ export class SpotifyService {
 
   constructor(
     private http: HttpClient,
-    private images: ImagesService
+    private images: ImagesService,
+    private router: Router
   ) { }
 
 
@@ -30,37 +32,28 @@ export class SpotifyService {
     this.refresh_token = "";
   }
 
+  private checkTokens() {
+    //redirect if no access token is available
+    if (this.access_token == "" || this.access_token == undefined) {
+      this.router.navigate(['landing']);
+    }
+  }
 
 
   private getRequest(url: string) {
-    //redirect if no access token is available
-    if (this.access_token == "" || this.access_token == undefined) {
-      window.location.href = "/login";
-      throw new Error("No tokens yet");
-    }
-
+    this.checkTokens();
     const headers = { 'Authorization': 'Bearer ' + this.access_token }
     return this.http.get<any>(url, { headers })
   }
 
   private postRequest(url: string, body: any) {
-    //redirect if no access token is available
-    if (this.access_token == "" || this.access_token == undefined) {
-      window.location.href = "/login";
-      throw new Error("No tokens yet");
-    }
-
+    this.checkTokens();
     const headers = { 'Authorization': 'Bearer ' + this.access_token, 'Content-Type': 'application/json' }
     return this.http.post<any>(url, body, { headers })
   }
 
   private putRequest(url: string, body: any) {
-    //redirect if no access token is available
-    if (this.access_token == "" || this.access_token == undefined) {
-      window.location.href = "/login";
-      throw new Error("No tokens yet");
-    }
-
+    this.checkTokens();
     const headers = { 'Authorization': 'Bearer ' + this.access_token, 'Content-Type': 'image/jpeg' }
     return this.http.put<any>(url, body, { headers })
   }
