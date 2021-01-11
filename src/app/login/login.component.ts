@@ -5,7 +5,7 @@ import { environment } from './../../environments/environment';
   selector: 'app-login',
   template: `
     <p>
-      Redirecting to login...
+      {{status}}
     </p>
   `,
   styles: [
@@ -14,6 +14,8 @@ import { environment } from './../../environments/environment';
 export class LoginComponent implements OnInit {
 
   constructor() { }
+
+  status = "Redirecting to login...";
 
   private stringify(params: any) {
     return Object.keys(params).map(key => key + '=' + params[key]).join('&');

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CallbackComponent } from './callback/callback.component';
-import { DoneComponent } from './done/done.component';
-import { GoComponent } from './go/go.component';
+
 import { LandingComponent } from './landing/landing.component';
+import { GoComponent } from './go/go.component';
+import { DoneComponent } from './done/done.component';
 import { LoginComponent } from './login/login.component';
+import { CallbackComponent } from './callback/callback.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },

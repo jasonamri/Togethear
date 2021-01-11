@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import './theme.css';
 html,
 body {
     height: 100%;
@@ -9,4 +8,76 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.black-fill-background {
+    background-color: black;
+    height: 100%;
+}
+
+span {
+    color: black;
+}
+
+.mat-h1,
+.mat-headline,
+.mat-typography h1 {
+    font: 400 8vw/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+    font-weight: lighter;
+}
+
+.mat-h2,
+.mat-title,
+.mat-typography h2 {
+    font: 500 4vw/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+    font-weight: lighter;
+}
+
+.mat-h3,
+.mat-subheading-2,
+.mat-typography h3 {
+    font: 400 32pt/28px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+    font-weight: lighter;
+}
+
+.mat-h4,
+.mat-subheading-1,
+.mat-typography h4 {
+    font: 400 24pt/24px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+    font-weight: lighter;
+}
+
+.mat-h5,
+.mat-typography h5 {
+    font: 400 16pt/20px Roboto, "Helvetica Neue", sans-serif;
+    margin: 0 0 12px;
+    font-weight: lighter;
+}
+
+.mat-h6,
+.mat-typography h6 {
+    font: 400 12pt/20px Roboto, "Helvetica Neue", sans-serif;
+    margin: 0 0 12px;
+    font-weight: lighter;
+}
+
+.mat-toolbar,
+.mat-toolbar h1,
+.mat-toolbar h2,
+.mat-toolbar h3,
+.mat-toolbar h4,
+.mat-toolbar h5,
+.mat-toolbar h6 {
+    font: 500 20pt/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0;
+    font-weight: lighter;
 }

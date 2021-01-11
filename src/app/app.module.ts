@@ -1,23 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { LandingComponent } from './landing/landing.component';
-import { GoComponent } from './go/go.component';
-import { DoneComponent } from './done/done.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+
+import { LandingComponent } from './landing/landing.component';
+import { GoComponent } from './go/go.component';
+import { DoneComponent } from './done/done.component';
 import { LoginComponent } from './login/login.component';
 import { CallbackComponent } from './callback/callback.component';
-
 
 @NgModule({
   declarations: [
@@ -35,7 +34,7 @@ import { CallbackComponent } from './callback/callback.component';
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [

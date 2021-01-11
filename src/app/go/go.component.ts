@@ -2,8 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { SpotifyService } from '.././spotify.service';
 import { FormControl } from '@angular/forms'
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { skip } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 interface Playlist {
@@ -38,7 +37,6 @@ export class GoComponent implements OnInit {
     private spotify: SpotifyService,
     private dialog: MatDialog,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
     public location: Location
   ) { }
 
