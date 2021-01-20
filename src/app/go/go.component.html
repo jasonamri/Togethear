@@ -9,7 +9,7 @@
 <div fxLayout="row" fxLayoutAlign="space-evenly" fxLayoutGap="24px" class="wrapper">
     <div *ngFor="let u of users;" class="col" fxLayout="column" fxLayoutGap="12px">
         <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="24px">
-            <img src={{u.profileUrl}} />
+            <img class="profile_img" src={{u.profileUrl}} />
             <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="24px">
                 <h3>{{u.title}}</h3>
                 <h4>{{u.name}} - <a href={{u.url}}>View Profile</a></h4>

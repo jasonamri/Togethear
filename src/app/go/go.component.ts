@@ -28,8 +28,7 @@ interface User {
 
 @Component({
   selector: 'app-go',
-  templateUrl: './go.component.html',
-  styleUrls: ['./go.component.css']
+  templateUrl: './go.component.html'
 })
 export class GoComponent implements OnInit {
 
