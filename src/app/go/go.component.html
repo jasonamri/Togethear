@@ -1,16 +1,16 @@
 <mat-toolbar *ngIf="client.ready" fxLayout="row" fxLayoutAlign="space-between center" color="primary">
-    <h1 [routerLink]="['/landing']">
+    <h1 class="accent-col" [routerLink]="['/landing']">
         Toget<b>hear</b>
     </h1>
-    <h2>
-        Logged in as <b>{{client.username}}</b>. <u (click)="logout()">Logout</u>?
+    <h2 class="accent-col">
+        <span class="mobile-hide">Logged in as <b>{{client.username}}</b>. </span><u (click)="logout()">Logout</u>?
     </h2>
 </mat-toolbar>
-<div fxLayout="row" fxLayoutAlign="space-evenly" fxLayoutGap="24px" class="wrapper">
-    <div *ngFor="let u of users;" class="col" fxLayout="column" fxLayoutGap="12px">
-        <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="24px">
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly" fxLayoutGap="2vw" class="wrapper">
+    <div *ngFor="let u of users;" class="col" fxLayout="column" fxLayoutGap="1vw">
+        <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="2vw">
             <img class="profile_img" src={{u.profileUrl}} />
-            <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="24px">
+            <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="2vw">
                 <h3>{{u.title}}</h3>
                 <h4>{{u.name}} - <a href={{u.url}}>View Profile</a></h4>
                 <h5>{{u.playlistCount}} playlists - {{u.followerCount}} followers</h5>
@@ -45,10 +45,10 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
-    <div *ngIf="users.length == 1" class="col" fxLayout="column" fxLayoutGap="12px">
-        <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="24px">
+    <div *ngIf="users.length == 1" class="col" fxLayout="column" fxLayoutGap="1vw">
+        <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="2vw">
             <img class="profile_img" src={{emptyUser.profileUrl}} />
-            <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="24px">
+            <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="2vw">
                 <h3>{{emptyUser.title}}</h3>
                 <mat-form-field class="example-form-field">
                     <mat-label>Search for Spotify User</mat-label>

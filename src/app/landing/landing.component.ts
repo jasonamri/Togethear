@@ -8,4 +8,8 @@ export class LandingComponent {
 
   constructor() { }
 
+  open(url: string) {
+    window.open(url);
+  }
+
 }
