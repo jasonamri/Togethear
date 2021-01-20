@@ -15,16 +15,7 @@ body {
     height: 100%;
 }
 
-span {
-    color: black;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.accent-col {
     color: #a5ffef;
 }
 
@@ -75,7 +66,7 @@ a {
 .mat-h3,
 .mat-subheading-2,
 .mat-typography h3 {
-    font: 400 32pt/28px Roboto, "Helvetica Neue", sans-serif;
+    font: 400 3.33vw/28px Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
     font-weight: lighter;
@@ -84,7 +75,7 @@ a {
 .mat-h4,
 .mat-subheading-1,
 .mat-typography h4 {
-    font: 400 24pt/24px Roboto, "Helvetica Neue", sans-serif;
+    font: 400 2.5vw/24px Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
     font-weight: lighter;
@@ -92,14 +83,14 @@ a {
 
 .mat-h5,
 .mat-typography h5 {
-    font: 400 16pt/20px Roboto, "Helvetica Neue", sans-serif;
+    font: 400 1.66vw/20px Roboto, "Helvetica Neue", sans-serif;
     margin: 0 0 12px;
     font-weight: lighter;
 }
 
 .mat-h6,
 .mat-typography h6 {
-    font: 400 12pt/20px Roboto, "Helvetica Neue", sans-serif;
+    font: 400 1.25vw/20px Roboto, "Helvetica Neue", sans-serif;
     margin: 0 0 12px;
     font-weight: lighter;
 }

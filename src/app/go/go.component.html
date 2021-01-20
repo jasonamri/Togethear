@@ -47,7 +47,7 @@
     </div>
     <div *ngIf="users.length == 1" class="col" fxLayout="column" fxLayoutGap="12px">
         <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="24px">
-            <img src={{emptyUser.profileUrl}} />
+            <img class="profile_img" src={{emptyUser.profileUrl}} />
             <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="24px">
                 <h3>{{emptyUser.title}}</h3>
                 <mat-form-field class="example-form-field">
