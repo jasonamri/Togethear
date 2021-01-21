@@ -16,13 +16,16 @@ interface Playlist {
 
 interface User {
   id: string,
+  isClient: boolean,
   title: string,
   profileUrl: string,
   name: string,
   url: string,
   playlistCount: number,
   followerCount: number,
-  playlists: Array<Playlist>
+  inclPrivate: boolean,
+  shownPlaylists: Array<Playlist>,
+  allPlaylists: Array<Playlist>
 };
 
 
@@ -50,7 +53,8 @@ export class GoComponent implements OnInit {
 
   client = {
     ready: false,
-    username: ""
+    username: "",
+    id: ""
   }
 
   searchControl = new FormControl('');
@@ -62,7 +66,8 @@ export class GoComponent implements OnInit {
 
     this.spotify.getUser().subscribe(data => {
       this.client.ready = true;
-      this.client.username = data["display_name"];
+      this.client.username = data.display_name;
+      this.client.id = data.id;
     })
     this.getUser();
   }
@@ -88,16 +93,20 @@ export class GoComponent implements OnInit {
         let image = (uData.images.length == 0) ? "assets/defaultprofile.png" : uData.images[0].url;
         this.users.push({
           id: uData.id,
+          isClient: (uData.id == this.client.id),
           title: user_id ? "Their Music" : "My Music",
           profileUrl: image,
           name: uData.display_name,
           url: uData.external_urls.spotify,
           playlistCount: pData.total,
           followerCount: uData.followers.total,
-          playlists: pls
+          inclPrivate: false,
+          shownPlaylists: pls.filter(pl => pl.public),
+          allPlaylists: pls
         })
       })
     })
+    console.log(this.users)
   }
 
   logout() {
@@ -105,6 +114,14 @@ export class GoComponent implements OnInit {
     this.router.navigate(['landing']);
   }
 
+  togglePrivate(u: User) {
+    u.inclPrivate = !u.inclPrivate;
+    if (u.inclPrivate) {
+      u.shownPlaylists = u.allPlaylists;
+    } else {
+      u.shownPlaylists = u.allPlaylists.filter(pl => pl.public);
+    }
+  }
 
   search() {
     this.spotify.getUser(this.searchControl.value).subscribe(data => {
@@ -123,7 +140,7 @@ export class GoComponent implements OnInit {
     dialogRef.componentInstance.data = { status: "Starting..." };
 
     let u1tracks: string[] = []
-    for (const pl of this.users[0].playlists) {
+    for (const pl of this.users[0].shownPlaylists) {
       if (pl.check) {
         dialogRef.componentInstance.data = { status: "Getting " + this.users[0].name + "'s playlist: " + pl.name };
         let buffer: string[] = await this.getPlaylistTracks(pl.id);
@@ -136,7 +153,7 @@ export class GoComponent implements OnInit {
     dialogRef.componentInstance.data = { status: "Done getting " + this.users[0].name + "'s playlists!" };
 
     let u2tracks: string[] = []
-    for (const pl of this.users[1].playlists) {
+    for (const pl of this.users[1].shownPlaylists) {
       if (pl.check) {
         dialogRef.componentInstance.data = { status: "Getting " + this.users[1].name + "'s playlist: " + pl.name };
         let buffer: string[] = await this.getPlaylistTracks(pl.id);

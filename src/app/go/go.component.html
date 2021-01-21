@@ -16,7 +16,10 @@
                 <h5>{{u.playlistCount}} playlists - {{u.followerCount}} followers</h5>
             </div>
         </div>
-        <table mat-table [dataSource]="u.playlists">
+        <div fxLayout="row" fxLayoutAlign="end">
+            <mat-slide-toggle [disabled]="!u.isClient" (click)="togglePrivate(u)">Include private playlists?</mat-slide-toggle>
+        </div>
+        <table mat-table [dataSource]="u.shownPlaylists">
             <ng-container matColumnDef="check">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element">
