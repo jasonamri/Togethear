@@ -6,10 +6,14 @@
         <h5 class="accent-col">{{pl.description}}</h5>
 
     </div>
-    <div fxLayout="row" fxLayoutAlign="center end">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="3.75vw">
         <button mat-raised-button color="accent" (click)="open(pl.shareUrl)">
+            <span>Open in Spotify </span>
             <mat-icon color="primary">launch</mat-icon>
-            <span> Open in Spotify</span>
+        </button>
+        <button mat-stroked-button color="accent" [routerLink]="['/go']">
+            <span class="accent-col">Start again </span>
+            <mat-icon color="accent">arrow_forward</mat-icon>
         </button>
     </div>
 </div>
