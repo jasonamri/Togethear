@@ -19,9 +19,13 @@ body {
     color: #a5ffef;
 }
 
-.profile_img {
+.profile-img {
     height: calc(12vw + 12px);
     border-radius: 50%;
+}
+
+.playlist-img {
+    height: calc(16vw + 150px);
 }
 
 table {
@@ -124,7 +128,7 @@ a {
 .mat-toolbar h4,
 .mat-toolbar h5,
 .mat-toolbar h6 {
-    font: 500 20pt/32px Roboto, "Helvetica Neue", sans-serif;
+    font: 500 calc(1.5vw + 8pt)/calc(1.5vw + 8pt) Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: normal;
     margin: 0;
     font-weight: lighter;

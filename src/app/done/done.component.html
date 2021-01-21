@@ -1,7 +1,7 @@
 <div class="black-fill-background" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="7.5vw">
     <h2 class="accent-col">Your playlist is ready!</h2>
-    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="24px">
-        <img src={{pl.imgUrl}} />
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="2vw">
+        <img class="playlist-img" src={{pl.imgUrl}} />
         <h3 class="accent-col"><b>{{pl.name}}</b></h3>
         <h5 class="accent-col">{{pl.description}}</h5>
 
@@ -9,7 +9,7 @@
     <div fxLayout="row" fxLayoutAlign="center end">
         <button mat-raised-button color="accent" (click)="open(pl.shareUrl)">
             <mat-icon color="primary">launch</mat-icon>
-            <span class="accent-col"> Open in Spotify</span>
+            <span> Open in Spotify</span>
         </button>
     </div>
 </div>

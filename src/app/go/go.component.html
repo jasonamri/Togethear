@@ -9,7 +9,7 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-evenly" fxLayoutGap="2vw" class="wrapper">
     <div *ngFor="let u of users;" class="col" fxLayout="column" fxLayoutGap="1vw">
         <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="2vw">
-            <img class="profile_img" src={{u.profileUrl}} />
+            <img class="profile-img" src={{u.profileUrl}} />
             <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="2vw">
                 <h3>{{u.title}}</h3>
                 <h4>{{u.name}} - <a href={{u.url}}>View Profile</a></h4>
@@ -47,7 +47,7 @@
     </div>
     <div *ngIf="users.length == 1" class="col" fxLayout="column" fxLayoutGap="1vw">
         <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="2vw">
-            <img class="profile_img" src={{emptyUser.profileUrl}} />
+            <img class="profile-img" src={{emptyUser.profileUrl}} />
             <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="2vw">
                 <h3>{{emptyUser.title}}</h3>
                 <mat-form-field class="example-form-field">
