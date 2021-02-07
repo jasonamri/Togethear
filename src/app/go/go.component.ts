@@ -106,7 +106,6 @@ export class GoComponent implements OnInit {
         })
       })
     })
-    console.log(this.users)
   }
 
   logout() {
