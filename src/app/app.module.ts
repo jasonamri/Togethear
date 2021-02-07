@@ -17,6 +17,7 @@ import { GoComponent } from './go/go.component';
 import { DoneComponent } from './done/done.component';
 import { LoginComponent } from './login/login.component';
 import { CallbackComponent } from './callback/callback.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CallbackComponent } from './callback/callback.component';
     GoComponent,
     DoneComponent,
     LoginComponent,
-    CallbackComponent
+    CallbackComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

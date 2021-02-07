@@ -6,6 +6,7 @@ import { GoComponent } from './go/go.component';
 import { DoneComponent } from './done/done.component';
 import { LoginComponent } from './login/login.component';
 import { CallbackComponent } from './callback/callback.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'go', component: GoComponent },
   { path: 'done', component: DoneComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'callback', component: CallbackComponent }
+  { path: 'callback', component: CallbackComponent },
+  { path: '**', component: NotfoundComponent }
 ];
 
 @NgModule({
