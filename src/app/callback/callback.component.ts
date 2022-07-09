@@ -46,13 +46,13 @@ export class CallbackComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       let code = params.code || null;
       let state = params.state || null;
-      let storedState = this.getCookie(environment.stateKey);
+      let storedState = this.getCookie("spotify_auth_state");
 
       if (state === null || state !== storedState) {
         this.status = "Error: " + "state_mismatch";
       } else {
         //clear cookie
-        document.cookie = environment.stateKey + '=; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = "spotify_auth_state" + '=; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 
         const headers = {
           'Authorization': 'Basic ' + btoa(environment.client_id + ':' + environment.client_secret),
@@ -61,7 +61,7 @@ export class CallbackComponent implements OnInit {
 
         const body = {
           code: code,
-          redirect_uri: environment.redirect_uri,
+          redirect_uri: location.protocol + '//' + location.host + "/togethear/callback",
           grant_type: 'authorization_code'
         }
 

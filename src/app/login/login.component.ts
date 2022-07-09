@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     const state = this.generateRandomString(16);
-    document.cookie = environment.stateKey + "=" + state;
+    document.cookie = "spotify_auth_state" + "=" + state;
 
     const scope = 'user-read-private ugc-image-upload playlist-modify-public playlist-read-private';
 
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       response_type: 'code',
       client_id: environment.client_id,
       scope: scope,
-      redirect_uri: environment.redirect_uri,
+      redirect_uri: location.protocol + '//' + location.host + "/togethear/callback",
       state: state
     }
 
